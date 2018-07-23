@@ -2,15 +2,14 @@ var axios = require('axios');
 var https = require('https');
 var minify = require('html-minifier').minify;
 var crypto = require('crypto');
+const JSON5 = require('json5')
 var functions = require('firebase-functions');
 var admin = require('firebase-admin');
-// Init firebase features with admin access
-admin.initializeApp(functions.config().firebase);
 var config = require('./config.js');
 
 var instance = axios.create({baseURL: '', timeout: 10000});
 
-var extractData = (regex, pageData) => {
+exports.extractContent = (pageData, regex) => {
   if (regex) {
     var matchStrings = regex.exec(pageData);
     if (matchStrings !== null) {
@@ -23,7 +22,13 @@ var extractData = (regex, pageData) => {
   }
 };
 
-var minifyPage = (pageData) => {
+exports.parseContent = (content, replaceRegex) => {
+  // Sanitize content string
+  content = content.replace(replaceRegex, '');
+  return JSON5.parse(content);
+};
+
+exports.minifyPage = (pageData) => {
   var minifyConfig = {
     removeEmptyAttributes: true,
     removeComments: true,
@@ -44,7 +49,7 @@ exports.isChanged = (webUrl) => {
   var dataHash = "";
   var urlId = "";
   return instance.request(requestConfig).then(res => {
-    var data = extractData(config.dataRegex, minifyPage(res.data));
+    var data = extractContent(minifyPage(res.data), config.dataRegex);
     if (data === null){
       console.error("Error: target data not found");
       reject();

@@ -1,4 +1,7 @@
 var functions = require('firebase-functions');
+var admin = require('firebase-admin');
+// Init firebase features with admin access
+admin.initializeApp(functions.config().firebase);
 var lineApi = require('line-api');
 var webChecker = require('./webChecker.js');
 var config = require('./config.js');

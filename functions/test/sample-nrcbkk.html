@@ -1,0 +1,596 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="multiApp" ng-controller="multiCtrl"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="multiApp" ng-controller="multiCtrl"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="multiApp" ng-controller="multiCtrl"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9" ng-app="multiApp" ng-controller="multiCtrl"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" ng-app="multiApp" ng-controller="multiCtrl"> <!--<![endif]-->
+
+<head>
+    <title ng-bind-html="pageData.title"></title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="{{pageData.appName}}">
+
+    <link rel="apple-touch-icon-precomposed" href="{{pageData.appIcon}}">
+    <!--[if IE 6]>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://store.nike.com/nikestore/html/css/ieonly.css" />
+    <![endif]-->
+
+<script src="https://assets.commerce.nikecloud.com/experience/tesla/react.min.js"></script>
+<script src="https://assets.commerce.nikecloud.com/experience/tesla/prop-types.min.js"></script>
+<script src="https://assets.commerce.nikecloud.com/experience/tesla/react-dom.min.js"></script>
+
+<script src="/events-registration/client-dist/scripts/lib/ua-parser-js/dist/ua-parser.min.js"></script>
+
+<script src="https://secure-store.nike.com/common/scripts/device_detect.js"></script>
+
+<script>
+    var nike = nike || {};
+    nike.geo = nike.geo || {};
+    nike.events = nike.events || {};
+    nike.events.ua = nike.events.ua || {};
+
+    var parser = new UAParser();
+
+    nike.events.ua.result = parser.getResult();
+
+</script>
+
+<script src="https://store.nike.com/NikeScriptManager.js?assets=nike,jQuery,nike.ScriptLoader,nike.EventBus,nike.geo.Locate&assetType=SCRIPT"></script>
+
+        <link rel="stylesheet" href="/events-registration/client-dist/styles/multi-main.min.css?v=1528759337696">
+
+    <script>
+    var nike = nike || {};
+    nike.events = nike.events || {};
+    nike.events.NOT_FOUND_URL = "http://" + window.location.host + "/event-calendar-not-found";
+    nike.events.PAGE_ID = "series";
+
+    var nsgLocale;
+
+    nike.events.content = {"multiPage":{"name":"NRC BKK","faqUrl":null,"headerImageUrl":"https://s3.nikecdn.com/events-platform/pre-prod/NET_Admin/header/2017-04-30_919_AMDRUNHEAD.jpg","mobileHeaderImageUrl":"https://s3.nikecdn.com/events-platform/pre-prod/NET_Admin/header/2017-04-30_919_AMDRUNMOBILE.jpg","colorCode":"87e300","languageCode":"th_th","country":"th","headerOverride":null,"description":null,"events":[{"id":"105192","eventCode":"","name":"READY SET GO RUN","description":"ยินดีต้อนรับกับการเป็นส่วนหนึ่งของ NRC BKK <br/>กับโปรแกรมเริ่มต้น READY SET GO RUN ณ ลานหน้าห้องสมุดประชาชน สวนลุมพินี<br/>ที่จะนำคุณเริ่มต้นการวิ่งไปพร้อมๆกับเพื่อนๆนักวิ่ง และการดูแลเป็นอย่างดีจากไนกี้โค้ชและไนกี้เพเซอร์ และร่วมทดลองผลิตภัณฑ์ตัวใหม่ล่าสุดจากเรา รองเท้า NIKE ZOOM PEGASUS 35 <br/><br/>มาร่วมวิ่งกับพวกเรา NRC BKK<br/><br/>*เริ่มลงทะเบียน เวลา 18.30 น. เป็นต้นไป<br/>*กรุณานำบัตรประชาชนมาเพื่อยืมรองเท้า<br/>*รองเท้ามีจำนวนจำกัด<br/>*เวลาการปล่อยตัวอาจมีการเปลี่ยนแปลง <br/>*ขอสงวนสิทธิ์การร่วมวิ่งครั้งนี้กับเราในรายชื่อที่ลงทะเบียนผ่านทาง Nike.com เท่านั้น","startDate":1532545440000,"endDate":1532550600000,"capacity":170,"registrationCount":170,"confirmationHeader":"การลงทะเบียนเสร็จสมบูรณ์","beforeYouGoLabel":"Know before you go","beforeYouGo":"NRC BKK RSG RUN <br />ณ ลานหน้าห้องสมุดประชาชน สวนลุมพินี<br />19.04 น. เป็นต้นไป<br /><br />*เริ่มลงทะเบียน เวลา 18.30 น. เป็นต้นไป<br />*กรุณามาลงทะเบียน และเตรียมความพร้อมก่อนเวลาเริ่ม 15 นาที<br />*กรุณานำบัตรประชาชนมาเพื่อยืมรองเท้า<br />*รองเท้ามีจำนวนจำกัด<br />*เวลาการปล่อยตัวอาจมีการเปลี่ยนแปลง <br />*ขอสงวนสิทธิ์การร่วมวิ่งครั้งนี้กับเราในรายชื่อที่ลงทะเบียนผ่านทาง Nike.com เท่านั้น","threshold":50,"minAge":19,"meetingPointDescription":"ลานหน้าห้องสมุดประชาชน สวนลุมพินี","meetingPointDescription2":"","locationName":"Bangkok Office - Thailand - ICT","contact":"","openDate":1532025000000,"closeDate":1532476740000,"eventColor":"e7ff00","fallbackLabel":"","bookAnotherEventLabel":"","unlimited":false,"headline":"NRC BKK","subHeadline1":"5KM","subHeadline2":null,"languageCode":"th_th","eventExtraFields":[{"eventExtraFieldId":0,"order":3,"profile":true,"required":true,"fieldName":"Email","eventExtraFieldValues":[]},{"eventExtraFieldId":0,"order":2,"profile":true,"required":true,"fieldName":"Last Name","eventExtraFieldValues":[]},{"eventExtraFieldId":0,"order":1,"profile":true,"required":true,"fieldName":"First Name","eventExtraFieldValues":[]},{"eventExtraFieldId":0,"order":7,"profile":true,"required":false,"fieldName":"Zip Code","eventExtraFieldValues":[]},{"eventExtraFieldId":0,"order":6,"profile":true,"required":true,"fieldName":"Gender","eventExtraFieldValues":[]},{"eventExtraFieldId":0,"order":5,"profile":true,"required":true,"fieldName":"Date of Birth","eventExtraFieldValues":[]},{"eventExtraFieldId":842684,"order":4,"profile":true,"required":true,"fieldName":"Mobile Number","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":0,"order":8,"profile":true,"required":true,"fieldName":"Country","eventExtraFieldValues":[]},{"eventExtraFieldId":842685,"order":10,"profile":false,"required":true,"fieldName":"Emergency Contact Number","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":842686,"order":9,"profile":false,"required":true,"fieldName":"Emergency Contact Name","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":842687,"order":11,"profile":false,"required":false,"fieldName":"กรุณาระบุ อีเมลล์ ของคุณ","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":842688,"order":12,"profile":false,"required":false,"fieldName":"กรุณาระบุเบอร์โทรศัพท์ของคุณ","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":0,"order":13,"profile":false,"required":false,"fieldName":"","eventExtraFieldValues":[]},{"eventExtraFieldId":0,"order":14,"profile":false,"required":false,"fieldName":"","eventExtraFieldValues":[]},{"eventExtraFieldId":842689,"order":15,"profile":false,"required":false,"fieldName":"ระดับความเร็วที่คุณต้องการร่วมวิ่ง","eventExtraFieldValues":[{"eventExtraFieldValueId":631702,"value":"เพซ 5","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":631703,"value":"เพซ 6","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":631704,"value":"เพซ 7","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":631705,"value":"เพซ 8","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":0,"order":16,"profile":false,"required":false,"fieldName":"","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":0,"order":17,"profile":false,"required":false,"fieldName":"","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":0,"order":18,"profile":false,"required":false,"fieldName":"","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]},{"eventExtraFieldId":0,"order":19,"profile":false,"required":false,"fieldName":"","eventExtraFieldValues":[{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0},{"eventExtraFieldValueId":0,"value":"","atCapacity":false,"capacity":0,"allocated":0}]}],"ageOfMajority":20,"utcOffsetMinutes":420,"participantDob":0,"participantAge":0,"registered":false,"type":"Run Club","category":"Running","seriesName":"NRC BKK","showFacebookShare":true,"showTwitterTweet":true,"message":{"code":"EVENT_FULL","message":"Event is full, cannot save registration.","registrationInfo":null},"startDateYear":null,"startDateMonth":"ก.ค.","startDateDayOfMonth":"25","startDateDayOfWeek":"วันพุธ","startDateTime":"19:04","startDatePeriod":"","endDateTime":"20:30","endDatePeriod":"","openDateYear":null,"openDateMonth":"ก.ค.","openDateDayOfMonth":"19","openDateDayOfWeek":null,"openDateTime":null,"openDatePeriod":null,"termsAndConditionsURL":"https://s3.nikecdn.com/events-platform/pre-prod/NET_Admin/legal/2017-04-18_919_NRC2017.pdf","meetingPointURL":"https://goo.gl/maps/p5u6Hx6V1vu","locationUrl":"https://maps.google.co.th/maps?q=Nike+(Thailand)+Limited+Sathon&hl=en&sll=13.746222,100.534322&sspn=0.008233,0.017316&oq=nike+&hq=Nike+(Thailand)+Limited&hnear=Sathon,+Bangkok&t=m&z=15&lci=com.panoramio.all","fallbackUrl":"http://nike.com/bangkok","bookAnotherEventUrl":"","faqUrl":"","faqLabel":null,"headerImageUrl":"https://s3.nikecdn.com/events-platform/pre-prod/NET_Admin/header/2017-04-30_919_AMDRUNHEAD.jpg","facebookShareMessage":"Never. Not. Moving. Join me at {event_name}. Register here: {event_url}","facebookShareImageUrl":"https://s3.nikecdn.com/events-platform/prod/Social/SocialGenericImage.jpeg","twitterMessage":"Never. Not. Moving. Join me at {event_name}. Register here: {event_url}","dateFormatCode":"europe","time24HourClock":true,"emailOptInCode":"RUN_EVENTS","quickRegistration":false,"rsvpLabel":null,"descriptionAlign":"CENTER","beforeYouGoAlign":"CENTER","locationCountryCode":"TH","waitListButton":null,"registrationCloseMessage1":"ยกเลิกงานวันนี้","registrationCloseMessage2":null,"eventValidationType":{"code":"full"},"exclusiveRegistration":false,"calendarReminderMinutes":null,"addToCalendar":null,"eventDuration":null,"edpTimeSlotButtonLabel":null,"startDateHasTime":true,"endDateHasTime":true,"confDesktopHeaderUrl":"https://s3.nikecdn.com/events-platform/pre-prod/NET_Admin/header/2017-06-10_919_AMDRUNHEAD.jpg","confMobileHeaderUrl":"https://s3.nikecdn.com/events-platform/pre-prod/NET_Admin/header/2017-06-10_919_AMDRUNMOBILE.jpg","confHeaderLinkUrl":""}]},"features":{"learn_more":{"name":null,"key":"learn_more","order":null,"valueList":[{"code":null,"value":"ดูรายละเอียดเพิ่มเติม"}]},"no_events":{"name":null,"key":"no_events","order":null,"valueList":[{"code":null,"value":"ไม่มีกิจกรรมในขณะนี้ <br/>โปรดกลับมาตรวจสอบอีกครั้งในภายหลัง!"}]},"faq":{"name":null,"key":"faq","order":null,"valueList":[{"code":null,"value":"คำถามที่ถามบ่อย"}]},"reserve_a_spot":{"name":null,"key":"reserve_a_spot","order":null,"valueList":[{"code":null,"value":"จองสิทธิ์เข้าร่วม"},{"code":null,"value":"ยกเลิก การจองสถานที่แข่งขัน"},{"code":null,"value":"แน่ใจหรือไม่"},{"code":null,"value":"ยืนยัน การยกเลิกจองสถานที่แข่งขัน"},{"code":null,"value":"ไม่ เก็บการจองสถานที่ของฉันไว้"}]},"header":{"name":null,"key":"header","order":null,"valueList":[{"code":null,"value":"กิจกรรมที่จะมีขึ้นเร็วๆ นี้"}]}},"validations":{"105192":{"REGISTRATION_EXISTS_WAIT_LIST":{"key":"REGISTRATION_EXISTS_WAIT_LIST","code":"BODY","value":"Waitlisted"},"REGISTRATION_EXISTS":{"key":"REGISTRATION_EXISTS","code":"HEADER","value":"ลงทะเบียนแล้ว"},"EVENT_NOT_OPEN":{"key":"EVENT_NOT_OPEN","code":"BODY","value":"<span class=\"no-wrap\">เปิดรับลงทะเบียน</span><span class=\"no-wrap\">19 ก.ค. เวลา 18:30</span>"},"EVENT_PASSED":{"key":"EVENT_PASSED","code":"BODY","value":"ปิดรับการลงทะเบียนแล้ว"},"EVENT_CLOSED":{"key":"EVENT_CLOSED","code":"BODY","value":"ปิดรับการลงทะเบียนแล้ว"},"MINIMUM_AGE_NOT_MET":{"key":"MINIMUM_AGE_NOT_MET","code":"BODY","value":"ไม่ตรงตามเกณฑ์จำกัดอายุ"},"EVENT_THRESHOLD":{"key":"EVENT_THRESHOLD","code":"HEADER","value":"0 ที่ว่างที่เหลือ"},"EVENT_WAIT_LIST":{"key":"EVENT_WAIT_LIST","code":"BODY","value":"Waitlist Only"},"EVENT_FULL":{"key":"EVENT_FULL","code":"BODY","value":"กิจกรรมนี้เต็มแล้ว"}}}} || {};
+
+    try {
+        nsgLocale = nike.events.content.multiPage.languageCode;
+    } catch (e) {
+        nsgLocale = null;
+    }
+
+    nike.events.content.seriesDirectBook = false;
+
+    var nsgConfig = {
+        HOST: 'https://www.nike.com',
+        LOCALE: nsgLocale
+    };
+    </script>
+
+</head>
+
+<body class="{{pageData.languageCategory}} {{pageData.languageLocale}}" multi gadgets language ng-click="bodyClick($event)">
+
+    <div id="cookieBanner" class="ncss boxed-cookie-banner-container"></div>
+
+
+    <div class="container {{pageData.device}}" container ng-cloak ng-switch="browserData.isSupported">
+        <section class="multi-events" ng-cloak ng-switch-when="true">
+            <header class="multi-events-header">
+                <h1 class="nsg-font-family--platform" ng-cloak ng-bind-html="multiData.multiPage.name"></h1>
+                <nav class="event-lang-{{multiData.multiPage.languageCode}}">
+                    <a href="{{multiData.multiPage.faqUrl}}" class="button-nike nsg-font-family--platform dark-grey" ng-click="analyticsMethods.trackNgClick('event platform:active page title:view faqs')" ng-bind-html="multiData.features.faq.valueList[0].value" ng-show="multiData.multiPage.faqUrl.length"></a>
+                </nav>
+            </header>
+            <div class="multi-header-graphic-container" ng-if="pageData.device !== 'mobile'">
+                <img class="animated fadeIn" ng-src="{{multiData.multiPage.headerImageUrl}}" on-image-load-show>
+            </div>
+            <div class="multi-header-graphic-container" ng-if="pageData.device === 'mobile'">
+                <img class="animated fadeIn" ng-src="{{multiData.multiPage.mobileHeaderImageUrl}}" on-image-load-show>
+            </div>
+            <article class="multi-events-container">
+                <div class="content" ng-show="multiData.multiPage.events.length">
+                    <div class="content" ng-show="multiData.multiPage.events.length">
+                        <h2 ng-if="multiData.multiPage.headerOverride != null" class="nsg-font-family--platform" ng-bind-html="multiData.multiPage.headerOverride" data-events-id="multiPage-title" ng-class="{'description-present': multiData.multiPage.description != null}"></h2>
+                        <h2 ng-if="multiData.multiPage.headerOverride == null" class="nsg-font-family--platform" ng-bind-html="multiData.features.header.valueList[0].value" data-events-id="multiPage-title" ng-class="{'description-present': multiData.multiPage.description != null}"></h2>
+                        <p ng-if="multiData.multiPage.description != null" class="text-align-center series-description" ng-bind-html="multiData.multiPage.description"></p>
+                    <ul class="events-group">
+                                                <li multi-card ng-repeat="event in multiData.multiPage.events"></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="content" ng-show="pageData.showNoEventsMessage === true">
+                    <h2 class="nsg-font-family--platform" ng-bind-html="pageData.noEventsMessage"></h2>
+                </div>
+            </article>
+        </section>
+
+        <div ng-switch-when="false" class="not-supported-container">
+            <p>We no longer support the version of the browser you are using. Please upgrade to the latest version.</p>
+            <p>Этот браузер не поддерживается. Пожалуйста, обновите ваш браузер.</p>
+            <p>Ce navigateur est pas pris en charge. S'il vous plaît mettre à jour votre navigateur.</p>
+            <p>Este navegador não é suportado. Por favor atualize seu navegador.</p>
+            <p>Dieser Browser wird nicht unterstützt. Bitte aktualisieren Sie Ihren Browser.</p>
+        </div>
+    </div>
+
+    <div class="events-modal-overlay {{pageData.device}}" ng-show="pageData.showModal" ng-cloak>
+        <div modal></div>
+    </div>
+
+    <script src="https://www.nike.com/profile/assets/libs/backbone.min.js"></script>
+    <script src="https://www.nike.com/profile/assets/jsapi/nike-profile.min.js"></script>
+    <script src="/events-registration/client-dist/scripts/lib.min.js?v=1528759337696"></script>
+    <script src="/events-registration/client-dist/scripts/app-multi.min.js?v=1528759337696"></script>
+
+<script>
+
+    /**
+     * BEGIN EVENTS-REG NON-BLOCKING CODE
+     */
+    var nike = nike || {};
+    nike.events = nike.events || {};
+
+    nike.events.HOST_NAME = window.location.hostname;
+    nike.events.SERVICE_ROOT_URL = "//" + nike.events.HOST_NAME;
+    nike.events.API_ROOT_URL = 'https://' + nike.events.HOST_NAME + '/events-api';
+    nike.events.NSG_URL = 'https://www.nike.com';
+    nike.events.STORE_URL = 'https://secure-store.nike.com';
+    nike.events.ROOT_URL = "/events-registration/client-dist/";
+    nike.events.ISIE10 = false;
+
+    // init privacy object fo use throughout the app
+    // will be updated on page load if sq cookie is set
+    // and when COOKIE_SETTINGS_CHANGED_EVENT is fired
+    nike.events.privacy = {
+        fp: false,
+        ad: false
+    };
+
+    /*@cc_on
+    if (/^10/.test(@_jscript_version)) {
+        nike.events.ISIE10 = true;
+    }
+    @*/
+    nike.events.ISIE11 = (navigator.userAgent.match(/Trident.*rv\:11\./)) ? true : false;
+
+    // Overwrite NSG / STORE based on `nsg` parameter
+    if (location.search.match(/nsg=(\d+)/)) {
+        var nsg = location.search.match(/nsg=(\d+)/)[1];
+        nike.events.NSG_URL = 'https://ecn' + nsg + '-www.nikedev.com';
+        nike.events.STORE_URL = 'https://ecn' + nsg + '-secure-store.nikedev.com';
+    }
+
+    var isDevelopmentEnvironment =
+            nike.events.HOST_NAME.indexOf("ecn") > -1 ||
+            nike.events.HOST_NAME.indexOf("local") > -1 ||
+            location.search.indexOf('dev=true') > -1;
+
+    /**
+     * END EVENTS-REG
+     */
+
+
+    /**
+     * BEGIN - functions for asynchronously attaching CSS and JS to the page
+     */
+    function loadCSS(src, cb) {
+        var ref = window.document.getElementsByTagName("link")[0];
+        var linkEl = window.document.createElement("link");
+        linkEl.setAttribute("rel", "stylesheet");
+        linkEl.setAttribute("type", "text/css");
+        linkEl.setAttribute("href", src);
+
+        ref.parentNode.insertBefore(linkEl, ref);
+
+        if (cb && typeof(cb) === "function") {
+            linkEl.onload = cb;
+        }
+        return linkEl;
+    }
+
+
+    function loadJS(src, cb) {
+        "use strict";
+        var ref = window.document.getElementsByTagName("script")[0];
+        var script = window.document.createElement("script");
+        script.src = src;
+        script.async = true;
+        ref.parentNode.insertBefore(script, ref);
+        if (cb && typeof(cb) === "function") {
+            script.onload = cb;
+        }
+        return script;
+    }
+
+    /**
+     * END - async functions
+     */
+
+    /**
+     * BEGIN - Location detection, relies on _locate.ftl loaded in the head
+     */
+            // check for Locate.hasCompleted to be true
+    var locInterval = window.setInterval(isLocateComplete, 500);
+    var locTestCount = 0;
+
+    function isLocateComplete() {
+        locTestCount++;
+
+        if (nike.geo.Locate.hasCompleted) {
+            clearInterval(locInterval);
+            setLocation(getLocation());
+        } else {
+            // timeout and set location to fallback
+            if (locTestCount > 5) {
+                clearInterval(locInterval);
+                setLocation(null);
+            }
+        }
+    }
+
+    function getLocation() {
+        var location;
+
+        if (nike.geo.CookieData && nike.geo.CookieData.sessionDetected) {
+            // preferably the user has a store cookie
+            location = {
+                country: nike.geo.CookieData.sessionDetected.country,
+                language: nike.geo.CookieData.sessionDetected.language
+            }
+        }
+
+        return location;
+    }
+
+    function setLocation(locationObj) {
+        // location object is empty, fallback to en_gb
+        if (!locationObj || !nike.geo.Configuration.isSupported(locationObj.country)) {
+            locationObj = {
+                country: 'gb',
+                language: 'en_gb'
+            }
+        }
+
+        nike.events.geo = locationObj;
+        nike.COUNTRY = locationObj.country;
+        nike.LOCALE = locationObj.language;
+
+
+        // callback function to load once location has been determined
+        asyncHeaderFooter();
+    }
+
+    //// @see NET-111
+    //document.write('<script src="https://s3.nikecdn.com/events-platform/prod/NSG/nsg.js"><\/script>');
+
+
+    /**
+     * BEGIN - Location specific code, will load
+     * Global header
+     * Global footer
+     * Cookie Manager
+     */
+
+     // Check for header/footer removal
+     var isWebView = location.search.match(/device=(ios|android)/),
+         isNetUnite = location.search.match(/device=(netunite)/),
+         hasLinks = location.search.match(/links=true/);
+
+
+    function asyncHeaderFooter() {
+
+        var isUniteGeoException = false;
+
+        // Load NET Unite for these geos that maintain their own header/footer
+        if (nike.events.eventGeo === 'br' || nike.events.eventGeo === 'hk' || nike.events.eventGeo === 'kr') {
+            isUniteGeoException = true;
+            hasLinks = true;
+        }
+
+        // Nike global nav
+        nike.events.gadgetHeader = 'nike.gadget.OneNikeNav';
+        nike.events.gadgetFooter = 'nike.gadget.OneNikeFooter';
+
+        if (nike.exp.script.device_detect.isMobile() && !isWebView) {
+            nike.events.gadgetHeader = 'nike.gadget.mobile.OneNikeNav';
+            nike.events.gadgetFooter = 'nike.gadget.mobile.OneNikeFooter';
+        }
+
+        // Global Header and Footer gadgets requirements
+        nike.events.gadgetPrefix = nike.events.STORE_URL;
+        nike.events.gadgetPrefix += '/' + nike.events.geo.country + '/' + nike.events.geo.language;
+
+        // if this is not loading inside an app webview, or one of the other exceptions where we don't
+        // load header/footer, then create the DOM elements and load the full JS and CSS
+        if (!isWebView && !isNetUnite && !isUniteGeoException && !nike.exp.script.device_detect.isMobile()) {
+            // Desktop defaults
+            nike.events.gadgetCss = "/style.css?assets=nike,nike.gadget.OneNikeNav,nike.gadget.OneNikeFooter,nike.exp.util.shared.desktop.CookieSettings,nike.exp.global.CookieSettingsCheck,nike.exp.global.CookieSettingsHandler,nike.style.nsg.nsg-desktop,nike.style.exp.exp-desktop&assetType=STYLE";
+            nike.events.gadgetJs = "/NikeScriptManager.js?assets=nike,jQuery,nike.nsgInit,polyfills,nike.ScriptLoader,nike.EventBus,nike.page.OneNikeShell,nike.page.OneNikePageLayout,nike.fonts.glyphPolyfill,nike.exp.global.Ad,nike.exp.util.shared.desktop.CookieSettings,nike.style.exp.exp-desktop,nike.exp.util.shared.base.TextReplacement,nike.exp.global.CookieSettingsCheck,nike.exp.global.CookieSettingsHandler&assetType=SCRIPT";
+
+            // create the header and insert as the first child of the body
+            // as it must be the first element in the DOM for mobile layout
+            var globalHeader = document.createElement("div");
+            globalHeader.setAttribute("class", "animated fadeIn nike-gadget-header");
+            globalHeader.setAttribute("data-gadget", nike.events.gadgetHeader);
+            document.body.insertBefore(globalHeader, document.body.firstChild);
+
+            // create the footer an append to the body
+            var globalFooter = document.createElement("div");
+            globalFooter.setAttribute("class", "animated fadeIn nike-gadget-footer");
+            globalFooter.setAttribute("data-gadget", nike.events.gadgetFooter);
+            document.body.appendChild(globalFooter);
+
+        } else {
+            nike.events.gadgetCss = "/style.css?assets=skin_onenike,nike,nike.gadget.mobile.OneNikeFooter,nike.exp.util.shared.mobile.CookieSettings,nike.exp.global.CookieSettingsCheck,nike.exp.global.mobile.CookieSettingsHandler,nike.gadget.mobile.OneNikeNav,nike.style.nsg.nsg-mobile,nike.style.exp.exp-mobile,skin.onenike_mobile&assetType=STYLE";
+        }
+
+        // if page is loading with exceptions for the header/footer
+        if (isWebView || isNetUnite || isUniteGeoException || nike.exp.script.device_detect.isMobile()) {
+            if (isWebView) {
+                /**
+                 ==> NET-1831:
+                 Don't show links when app loads in webview. "&links=true" should be passed in the url to make them visisble.
+                 For geos "hk","br" and "kr", links are made available in webview by default.
+                */
+                document.body.className += hasLinks ? ' is-format-webview-links' : ' is-format-webview-only';
+
+                // Load jQuery + Modernizr only
+                nike.events.gadgetJs = '/NikeScriptManager.js?app=nikestore&version=latest&assets=nike,nike.EventBus,jQuery,Modernizr&assetType=SCRIPT">';
+
+            } else {
+                // Load cookie settings and minimal requirements, but no header/footer
+                nike.events.gadgetJs = "/NikeScriptManager.js?assets=nike,jQuery,nike.EventBus,nike.exp.util.shared.desktop.CookieSettings,nike.exp.global.CookieSettingsCheck,nike.exp.global.CookieSettingsHandler&assetType=SCRIPT";
+
+                // Mobile overwrite
+                if (nike.exp.script.device_detect.isMobile()) {
+                    nike.events.gadgetJs = "/NikeScriptManager.js?assets=nike,nike.exp.util.shared.mobile.CookieSettings,nike.exp.global.CookieSettingsCheck,nike.exp.global.mobile.CookieSettingsHandler,nike.store.ui.widgets.ModalDialog&assetType=SCRIPT";
+                }
+            }
+
+        }
+
+        loadCSS(nike.events.gadgetPrefix + nike.events.gadgetCss);
+        // load the JS gadget
+        loadJS(nike.events.gadgetPrefix + nike.events.gadgetJs, checkCookieSetting);
+        loadJS('https://www.nike.com/styleguide/init/nsg.js');
+
+        // CookieSettingsManager
+        function checkCookieSetting() {
+            // geo.Locate will determine if location requires cookie settings prompt
+            if (nike.exp.dynamic.AppConfig.IS_COOKIE_SETTINGS_ENABLED) {
+
+                var cookieMgr = document.createElement("div");
+                cookieMgr.setAttribute("data-gadget", "nike.gadget.CookieSettingsManager");
+                cookieMgr.setAttribute("data-load", "lazy");
+                if (nike.exp.script.device_detect.isMobile()) {
+                    cookieMgr.setAttribute("data-mobile", "true");
+                }
+                document.body.appendChild(cookieMgr);
+
+            }
+
+            // does CookieSettingsCheck exist
+            if (nike.exp && nike.exp.global && nike.exp.global.CookieSettingsCheck) {
+
+                // are functional and performance cookies allowed
+                if (nike.exp.global.CookieSettingsCheck.isFPCookiesAllowed()) {
+                    // if functional/performance cookies permitted, load analytics
+                    loadAnalytics();
+                }
+
+                // are social and advertising cookies allowed
+                if (nike.exp.global.CookieSettingsCheck.isAdCookiesAllowed()) {
+                    loadSocial();
+                }
+
+                // state of cookies on page load
+                nike.events.privacy.fp = nike.exp.global.CookieSettingsCheck.isFPCookiesAllowed();
+                nike.events.privacy.ad = nike.exp.global.CookieSettingsCheck.isAdCookiesAllowed();
+            }
+
+            // add event listener for changes to the cookie settings
+            nike.listen(nike.gadget.Event.COOKIE_SETTINGS_CHANGED_EVENT, function(e, a) {
+
+                // check current and incoming values to make sure we don't try to add or
+                // remove the same library twice
+                if((a && a.functionalAndPerformance) && !nike.events.privacy.fp){
+                    loadAnalytics();
+                } else if((a && !a.functionalAndPerformance) && nike.events.privacy.fp) {
+                    unloadAnalytics();
+                }
+
+                if((a && a.advertising) && !nike.events.privacy.ad){
+                    loadSocial();
+                } else if(!a.advertising && nike.events.privacy.ad) {
+                    unloadSocial();
+                }
+
+                // update our local vars to track the new state
+                nike.events.privacy.fp = a.functionalAndPerformance;
+                nike.events.privacy.ad = a.advertising;
+
+            })
+        }
+
+
+        var fixHeight = function () {
+            if (typeof $ === 'function' && $('.gnav').length) {
+                $('body').css('padding-top', $('.gnav').height());
+            } else {
+                setTimeout(fixHeight, 100);
+            }
+        };
+        setTimeout(fixHeight, 100);
+
+    }
+
+    /**
+     * BEGIN - Load Analytics
+     * Will be called conditionally based on user location and cookie settings
+     */
+    function loadAnalytics() {
+
+        // Google Analytics
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', isDevelopmentEnvironment ? 'UA-31049791-34' : 'UA-31049791-33', 'auto', {
+            allowLinker: true
+        });
+        ga('require', 'linker');
+        ga('linker:autoLink', ['n.racepartner.com']);
+
+        // Omniture script URL and account name
+        var s_account = "nikecomprod";
+        nike.events.omnitureJsEnv = "prod";
+
+        // More omniture configurations
+        var NET_EMBED_APP = location.search.match(/app=([a-z]+)/);
+        if (NET_EMBED_APP) {
+            var TLD = nike.events.HOST_NAME.split('.');
+            TLD.shift(); // remove www / ecn
+            document.cookie = 'appId=' + NET_EMBED_APP[1] + (isDevelopmentEnvironment ? 'dev' : '') + '; path=/; domain=.' + TLD.join('.');
+        }
+
+        loadJS('//web.nike.com/neo/thirdparty/neo.js');
+
+
+    }
+
+    function loadSocial() {
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '84697719333',
+                status: true,
+                cookie: true,
+                xfbml: true
+            });
+        };
+        // Load the SDK asynchronously
+        (function (d) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+
+    }
+    function unloadAnalytics () {
+        unloadGa();
+        unloadNeo()
+    }
+
+    function unloadGa () {
+        try {
+            window.ga = null;
+        } catch(e) {
+            console.error('there was an error unloading GA');
+        }
+
+    }
+    function unloadNeo () {
+        try {
+            window.AppMeasurement
+                    = window.AppMeasurement_Module_ActivityMap
+                    = window.AppMeasurement_Module_AudienceManagement
+                    = window.AppMeasurement_Module_Integrate
+                    = window.AppMeasurement_Module_Media = null;
+
+            window.neo = null;
+        } catch(e) {
+            console.error('there was an error unloading neo.js');
+        }
+
+    }
+
+    function unloadSocial () {
+        try {
+            window.FB = null;
+        } catch(e) {
+            console.error('there was an error unloading FB');
+        }
+
+    }
+
+    /**
+     * END - Load Analytics
+     */
+
+    // is this a single event page
+    if(nike.events.content.event){
+        // Locale specific CSS loading
+        (function (locale) {
+            var customCSSLocales = ['ko_kr', 'ja_jp'];
+            if (customCSSLocales.indexOf(locale) > -1) {
+                document.write("<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"/events-registration/client-dist/styles/locale-specific/" + locale + ".css\">");
+            }
+        }(nike.events.content.event.eventDetails[0].language.languageCode + '_' + nike.events.content.event.eventDetails[0].language.countryCode.toLowerCase()));
+    }
+
+
+</script>
+
+
+<script>
+    var geoException = nike.events.eventGeo;
+
+    if(isWebView || isNetUnite || geoException == 'br' || geoException == 'hk' || geoException == 'kr' || nike.exp.script.device_detect.isMobile()){
+        // Environmental and event set up
+        // Default environment is 85, cred change for prod and perf
+        var uniteCdn = "https://s3.nikecdn.com/unite-dev/stage/scripts/unite.min.js";
+        var uniteClientId = "uCNRJ1DuVtdY49VjZTyWpbsyFpe91R16";
+        var uniteUxId = "com.nike.brand.eventstool.web";
+        var uniteEnv = "identityInt_ecn85";
+
+        var isProd = (nike.events.HOST_NAME.indexOf("nike.com") > -1);
+        var is86 = (nike.events.HOST_NAME.indexOf("ecn86") > -1);
+        var is88 = (nike.events.HOST_NAME.indexOf("ecn88") > -1);
+        var is89 = (nike.events.HOST_NAME.indexOf("ecn89") > -1);
+        if (isProd) {
+            uniteEnv = "identity";
+            uniteClientId = "xL2bhSvAXetUfATOIHjGd1cKmGeqnwrz";
+            uniteCdn = "https://s3.nikecdn.com/unite/scripts/unite.min.js";
+        }
+        if (is86){ uniteEnv = "identityInt_ecn86" }
+        if (is88) {
+            uniteEnv = "identityInt_ecn88";
+            uniteClientId = "USpFkT0KJOsYACj82kESqJnqG9N7pgGq";
+        }
+        if (is89){
+            uniteEnv = "identityInt_ecn89";
+            uniteClientId = "06LwQXt3syrbFPAGBR5aOQLYCuMFHuOn";
+        }
+
+        //    console.debug('unite config: cdn=',uniteCdn, 'env=', uniteEnv, 'isProd=', isProd );
+
+        var uniteParams = 'src="'+uniteCdn+'" data-clientid="'+uniteClientId+'" data-uxid="'+uniteUxId+'" data-locale="'+nike.LOCALE+'" data-backendenvironment="'+uniteEnv+'"';
+
+        if (!isProd){
+            uniteParams += ' data-environment="ci"';
+        }
+
+        document.write('<script type="text/javascript" id="nike-unite" data-defaultview="none" data-allowqueryparams="true" '+uniteParams+'><\/script>');
+    }
+</script>
+
+    <script>/** @see NET-606 */moment.lang(nike.events.content.multiPage.languageCode.replace('_', '-'));</script>
+<script type="text/javascript">var _cf = _cf || [];  _cf.push(['_setBm', true]);</script><script type="text/javascript" src="/_bm/bd-1-30"></script></body>
+</html>

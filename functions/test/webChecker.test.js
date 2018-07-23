@@ -14,7 +14,6 @@ describe('webChecker', () => {
         beforeEach((done) => {
             // Load html from sample NRCBKK page
             pageHtml = fs.readFileSync(SAMPLE_PAGE_PATH, {encoding: 'utf-8'});
-            // pageHtml = webChecker.minifyPage(pageHtml);
             done();
         });
         it('should extract content from page correctly', () => {

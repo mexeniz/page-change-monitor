@@ -15,8 +15,6 @@ var MOCK_EVENT = {
     'headline': 'NRC BKK',
     'subHeadline1': '5KM',
     'seriesName': 'NRC BKK',
-    'showFacebookShare': true,
-    'showTwitterTweet': true,
     'startDateMonth': 'ก.ค.',
     'startDateDayOfMonth': '25',
     'startDateDayOfWeek': 'วันพุธ',
@@ -34,7 +32,8 @@ var MOCK_EVENT = {
 describe('NRCEvent Model', () => {
 
     it('should init instance correctly', () => {
-        var event = new NRCEvent(MOCK_EVENT.id, MOCK_EVENT.name, MOCK_EVENT.capacity, MOCK_EVENT.registrationCount, MOCK_EVENT.location);
+        var event = new NRCEvent(MOCK_EVENT.id, MOCK_EVENT.name, MOCK_EVENT.capacity, MOCK_EVENT.registrationCount, MOCK_EVENT.location,
+                                 MOCK_EVENT.startDate, MOCK_EVENT.endDate, MOCK_EVENT.openDate, MOCK_EVENT.closeDate);
         assert.equal(event.id, MOCK_EVENT.id);
         assert.equal(event.capacity, MOCK_EVENT.capacity);
         assert.equal(event.regCount, MOCK_EVENT.registrationCount);
@@ -45,5 +44,17 @@ describe('NRCEvent Model', () => {
         assert.equal(event.id, MOCK_EVENT.id);
         assert.equal(event.capacity, MOCK_EVENT.capacity);
         assert.equal(event.regCount, MOCK_EVENT.registrationCount);
+        // Assert dateTime string
+        assert.equal(event.eventDate, 'Wed 25 Jul');
+        assert.equal(event.startDateTime, MOCK_EVENT.startDateTime);
+        assert.equal(event.endDateTime, MOCK_EVENT.endDateTime);
+        assert.equal(event.regDate, 'Thu 19 Jul');
+        assert.equal(event.regDateTime, '18:30');
+    });
+
+    it('should be converted to string correctly', () => {
+        var event = NRCEvent.prototype.fromJSON(MOCK_EVENT);
+        console.log('event.toString()');
+        console.log(event.toString());
     });
 });

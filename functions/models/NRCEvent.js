@@ -1,3 +1,5 @@
+const eventChange = require('../constant').eventChange;
+
 var getDateMonthString = (dateTime) => {
     // toUTCString() : 'Wed, 25 Jul 2018 19:04:00 GMT'
     var month = dateTime.toUTCString().split(' ')[2];
@@ -14,6 +16,9 @@ function NRCEvent(id, name, capacity, regCount, location, startDate, endDate, op
     this.id = id;                       // Event ID
     this.name  = name;                  // Event Name ex. 'NRCBKK READY SET GO RUN 5K'
     this.capacity = capacity;           // Max Capacity
+    if (regCount > capacity) {
+        throw new RangeError('regCount should not be more than capacity.')
+    }
     this.regCount = regCount;           // Number of Registered Users
     this.location = location;           // Location Description 
     this.startDate = new Date(startDate);         // Start Running Date (epoch)      
@@ -26,7 +31,7 @@ function NRCEvent(id, name, capacity, regCount, location, startDate, endDate, op
     this.endDateTime = getTimeString(this.endDate);         // Event End Time   ex. '20.30'
     this.regDate = getDateMonthString(this.openDate);       // Registration Date ex. '19 July'
     this.regDateTime = getTimeString(this.openDate);        // Registration Time ex. '20.30'
-}
+};
 
 /**
  * Convert instance to a string.
@@ -37,14 +42,36 @@ NRCEvent.prototype.toString = function () {
                       `Open date: ${this.regDate} ${this.regDateTime}\n` +
                       `Run date: ${this.eventDate} ${this.startDateTime}-${this.endDateTime}\n`
     return eventString;
-}
+};
+
+/**
+ * Check if event is full.
+ */
+NRCEvent.prototype.isFull = function() {
+    return this.regCount == this.capacity ;
+};
+
+/**
+ * Check if event is almost full.
+ */
+NRCEvent.prototype.isAlmostFull = function() {
+    var freeSlot = this.capacity - this.regCount;
+    return freeSlot != 0 && freeSlot <= 5  ;
+};
 
 /**
  * Static. Compare new event with previous one. 
  */
-NRCEvent.prototype.compare = function (event1, event2) {
-    return 0;
-}
+NRCEvent.prototype.compareChange = function (event1, event2) {
+    if (!event1.isFull() && event2.isFull()){
+        return eventChange.FULL;
+    } else if (event1.isFull() && !event2.isFull()){
+        return eventChange.FREE_SLOT;
+    } else if (!event1.isAlmostFull() && event2.isAlmostFull()){
+        return eventChange.ALMOST_FULL;
+    }
+    return eventChange.NO_CHANGE;
+};
 
 /**
  * Static. 
@@ -67,6 +94,6 @@ NRCEvent.prototype.fromJSON = function (jsonEvent) {
     var location = meetingPointDescription + meetingPointDescription2;
     var eventName = `${headline} ${name} (${subHeadline1})`
     return new NRCEvent(id, eventName, capacity, registrationCount, location, startDate, endDate, openDate, closeDate);
-}
+};
 
 module.exports = NRCEvent;

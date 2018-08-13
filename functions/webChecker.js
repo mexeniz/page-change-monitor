@@ -3,7 +3,6 @@ var https = require('https');
 var minify = require('html-minifier').minify;
 var crypto = require('crypto');
 const JSON5 = require('json5')
-var functions = require('firebase-functions');
 var admin = require('firebase-admin');
 var config = require('./config.js');
 

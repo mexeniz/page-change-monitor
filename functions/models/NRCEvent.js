@@ -8,29 +8,31 @@ var getDateMonthString = (dateTime) => {
     return `${weekDay} ${day} ${month}`
 };
 var getTimeString = (dateTime) => {
-    var hour = dateTime.getUTCHours().toString(), min = dateTime.getUTCMinutes().toString();min
+    var hour = dateTime.getUTCHours().toString(),
+        min = dateTime.getUTCMinutes().toString();
+    min
     return `${hour.padStart(2,'0')}:${min.padStart(2,'0')}`;
 };
 
 function NRCEvent(id, name, capacity, regCount, location, startDate, endDate, openDate, closeDate) {
-    this.id = id;                       // Event ID
-    this.name  = name;                  // Event Name ex. 'NRCBKK READY SET GO RUN 5K'
-    this.capacity = capacity;           // Max Capacity
+    this.id = id; // Event ID
+    this.name = name; // Event Name ex. 'NRCBKK READY SET GO RUN 5K'
+    this.capacity = capacity; // Max Capacity
     if (regCount > capacity) {
         throw new RangeError('regCount should not be more than capacity.')
     }
-    this.regCount = regCount;           // Number of Registered Users
-    this.location = location;           // Location Description 
-    this.startDate = new Date(startDate);         // Start Running Date (epoch)      
-    this.endDate = new Date(endDate);             // End Running Date (epoch)      
-    this.openDate = new Date(openDate);           // Open Registration Date (epoch)  
-    this.closeDate = new Date(closeDate);         // Close Registration Date (epoch)
+    this.regCount = regCount; // Number of Registered Users
+    this.location = location; // Location Description 
+    this.startDate = new Date(startDate); // Start Running Date (epoch)      
+    this.endDate = new Date(endDate); // End Running Date (epoch)      
+    this.openDate = new Date(openDate); // Open Registration Date (epoch)  
+    this.closeDate = new Date(closeDate); // Close Registration Date (epoch)
     // Generated properties
-    this.eventDate = getDateMonthString(this.startDate);    // Event Date       ex. '25 July'
-    this.startDateTime = getTimeString(this.startDate);     // Event Start Time ex. '19.04'
-    this.endDateTime = getTimeString(this.endDate);         // Event End Time   ex. '20.30'
-    this.regDate = getDateMonthString(this.openDate);       // Registration Date ex. '19 July'
-    this.regDateTime = getTimeString(this.openDate);        // Registration Time ex. '20.30'
+    this.eventDate = getDateMonthString(this.startDate); // Event Date       ex. '25 July'
+    this.startDateTime = getTimeString(this.startDate); // Event Start Time ex. '19.04'
+    this.endDateTime = getTimeString(this.endDate); // Event End Time   ex. '20.30'
+    this.regDate = getDateMonthString(this.openDate); // Registration Date ex. '19 July'
+    this.regDateTime = getTimeString(this.openDate); // Registration Time ex. '20.30'
 };
 
 /**
@@ -38,36 +40,59 @@ function NRCEvent(id, name, capacity, regCount, location, startDate, endDate, op
  */
 NRCEvent.prototype.toString = function () {
     var eventString = `Event: ${this.name}\n` +
-                      `Registerd: ${this.regCount}/${this.capacity}\n` +
-                      `Open date: ${this.regDate} ${this.regDateTime}\n` +
-                      `Run date: ${this.eventDate} ${this.startDateTime}-${this.endDateTime}\n`
+        `Registerd: ${this.regCount}/${this.capacity}\n` +
+        `Open date: ${this.regDate} ${this.regDateTime}\n` +
+        `Run date: ${this.eventDate} ${this.startDateTime}-${this.endDateTime}\n`;
     return eventString;
+};
+
+/**
+ * Convert instance to a JSON object.
+ */
+NRCEvent.prototype.toJSON = function () {
+    var jsonObj = {
+        id: this.id,
+        name: this.name,
+        capacity: this.capacity,
+        regCount: this.regCount,
+        location: this.location,
+        startDate: this.startDate,
+        endDate: this.endDate,
+        openDate: this.openDate,
+        closeDate: this.closeDate,
+        eventDate: this.eventDate,
+        startDateTime: this.startDateTime,
+        endDateTime: this.endDateTime,
+        regDate: this.regDate,
+        regDateTime: this.regDateTime
+    };
+    return jsonObj;
 };
 
 /**
  * Check if event is full.
  */
-NRCEvent.prototype.isFull = function() {
-    return this.regCount == this.capacity ;
+NRCEvent.prototype.isFull = function () {
+    return this.regCount == this.capacity;
 };
 
 /**
  * Check if event is almost full.
  */
-NRCEvent.prototype.isAlmostFull = function() {
+NRCEvent.prototype.isAlmostFull = function () {
     var freeSlot = this.capacity - this.regCount;
-    return freeSlot != 0 && freeSlot <= 5  ;
+    return freeSlot != 0 && freeSlot <= 5;
 };
 
 /**
  * Static. Compare new event with previous one. 
  */
 NRCEvent.prototype.compareChange = function (event1, event2) {
-    if (!event1.isFull() && event2.isFull()){
+    if (!event1.isFull() && event2.isFull()) {
         return eventChange.FULL;
-    } else if (event1.isFull() && !event2.isFull()){
+    } else if (event1.isFull() && !event2.isFull()) {
         return eventChange.FREE_SLOT;
-    } else if (!event1.isAlmostFull() && event2.isAlmostFull()){
+    } else if (!event1.isAlmostFull() && event2.isAlmostFull()) {
         return eventChange.ALMOST_FULL;
     }
     return eventChange.NO_CHANGE;

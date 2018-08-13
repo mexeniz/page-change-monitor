@@ -1,34 +1,9 @@
 const NRCEvent = require('../models/NRCEvent');
 const assert = require('chai').assert;
 const eventChange = require('../constant').eventChange;
+const mockData = require('./mockData.json');
 
-var MOCK_EVENT = {
-    'id': '105192',
-    'name': 'READY SET GO RUN',
-    'startDate': 1532545440000,
-    'endDate': 1532550600000,
-    'capacity': 170,
-    'registrationCount': 150,
-    'meetingPointDescription': 'ลานหน้าห้องสมุดประชาชน สวนลุมพินี',
-    'meetingPointDescription2': '',
-    'openDate': 1532025000000,
-    'closeDate': 1532476740000,
-    'headline': 'NRC BKK',
-    'subHeadline1': '5KM',
-    'seriesName': 'NRC BKK',
-    'startDateMonth': 'ก.ค.',
-    'startDateDayOfMonth': '25',
-    'startDateDayOfWeek': 'วันพุธ',
-    'startDateTime': '19:04',
-    'startDatePeriod': '',
-    'endDateTime': '20:30',
-    'endDatePeriod': '',
-    'openDateYear': null,
-    'openDateMonth': 'ก.ค.',
-    'openDateDayOfMonth': '19',
-    'openDateDayOfWeek': null,
-    'openDateTime': null
-};
+var MOCK_EVENT = mockData.MOCK_EVENT_1;
 
 describe('NRCEvent Model', () => {
 
@@ -51,6 +26,21 @@ describe('NRCEvent Model', () => {
         assert.equal(event.endDateTime, MOCK_EVENT.endDateTime);
         assert.equal(event.regDate, 'Thu 19 Jul');
         assert.equal(event.regDateTime, '18:30');
+    });
+
+    it('should be converted to JSON object correctly', () => {
+        var jsonEvent = NRCEvent.prototype.fromJSON(MOCK_EVENT).toJSON();
+        assert.typeOf(jsonEvent, 'object');
+        assert.equal(jsonEvent.id, MOCK_EVENT.id);
+        assert.equal(jsonEvent.id, MOCK_EVENT.id);
+        assert.equal(jsonEvent.capacity, MOCK_EVENT.capacity);
+        assert.equal(jsonEvent.regCount, MOCK_EVENT.registrationCount);
+        // Assert dateTime string
+        assert.equal(jsonEvent.eventDate, 'Wed 25 Jul');
+        assert.equal(jsonEvent.startDateTime, MOCK_EVENT.startDateTime);
+        assert.equal(jsonEvent.endDateTime, MOCK_EVENT.endDateTime);
+        assert.equal(jsonEvent.regDate, 'Thu 19 Jul');
+        assert.equal(jsonEvent.regDateTime, '18:30');
     });
 
     it('should be converted to string correctly', () => {

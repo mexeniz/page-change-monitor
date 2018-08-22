@@ -44,6 +44,13 @@ exports.setEvent = (nrcEvent) => {
     return db.ref(baseUrl + '/' + eventId).set(nrcEvent.toJSON());
 };
 
+exports.setEvents = (nrcEventMap) => {
+    if (db == null) {
+        throw new Error('Admin app is not initialized.')
+    }
+    return db.ref(baseUrl).set(nrcEventMap);
+};
+
 exports.removeEvent = (eventId) => {
     if (db == null) {
         throw new Error('Admin app is not initialized.')

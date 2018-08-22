@@ -1,4 +1,4 @@
-exports.eventChange = {
+exports.eventChangeCode = {
     'NO_CHANGE' : 0,
     'FULL' : 1,
     'ALMOST_FULL' : 2,

@@ -1,4 +1,4 @@
-const eventChange = require('../constant').eventChange;
+const eventChangeCode = require('../constant').eventChangeCode;
 
 var getDateMonthString = (dateTime) => {
     // toUTCString() : 'Wed, 25 Jul 2018 19:04:00 GMT'
@@ -89,13 +89,13 @@ NRCEvent.prototype.isAlmostFull = function () {
  */
 NRCEvent.prototype.compareChange = function (event1, event2) {
     if (!event1.isFull() && event2.isFull()) {
-        return eventChange.FULL;
+        return eventChangeCode.FULL;
     } else if (event1.isFull() && !event2.isFull()) {
-        return eventChange.FREE_SLOT;
+        return eventChangeCode.FREE_SLOT;
     } else if (!event1.isAlmostFull() && event2.isAlmostFull()) {
-        return eventChange.ALMOST_FULL;
+        return eventChangeCode.ALMOST_FULL;
     }
-    return eventChange.NO_CHANGE;
+    return eventChangeCode.NO_CHANGE;
 };
 
 /**

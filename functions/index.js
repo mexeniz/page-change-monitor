@@ -18,11 +18,11 @@ var lineNotifySendMessage = (token, message) => {
 exports.webCheck = functions.https.onRequest((req, res) => {
   var notifyToken = req.query.notifyToken;
   if (notifyToken) {
-    webChecker.isChanged(config.webUrl).then((isChanged) => {
-      if (isChanged) {
+    webChecker.findChanges(config.webUrl).then((changes) => {
+      if (changes) {
         lineNotifySendMessage(notifyToken, notifyWebChangeMessage(config.webUrl));
       }
-      return res.status(200).json({"change": isChanged});
+      return res.status(200).json({"change": changes});
     }).catch((err) => {
       res.status(400).json(err);
     });

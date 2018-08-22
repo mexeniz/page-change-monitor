@@ -1,22 +1,27 @@
 var axios = require('axios');
 var https = require('https');
 var minify = require('html-minifier').minify;
-var crypto = require('crypto');
-const JSON5 = require('json5')
-var admin = require('firebase-admin');
+const EventChange = require('./models/EventChange');
+const NRCEvent = require('./models/NRCEvent');
+const eventChangeCode = require('./constant').eventChangeCode;
+const JSON5 = require('json5');
+const firebaseDB = require('./firebaseDB');
 var config = require('./config.js');
 
-var instance = axios.create({baseURL: '', timeout: 10000});
+var instance = axios.create({
+  baseURL: '',
+  timeout: 10000
+});
 
 exports.extractContent = (pageData, regex) => {
   if (regex) {
     var matchStrings = regex.exec(pageData);
     if (matchStrings !== null) {
       return matchStrings;
-    }else{
+    } else {
       return null;
     }
-  }else {
+  } else {
     return pageData;
   }
 };
@@ -39,39 +44,62 @@ exports.minifyPage = (pageData) => {
   return minify(pageData, minifyConfig);
 }
 
-exports.isChanged = (webUrl) => {
+exports.findChanges = (webUrl) => {
   const requestConfig = {
     method: 'get',
     url: webUrl,
-    httpsAgent: new https.Agent({keepAlive: true})
+    httpsAgent: new https.Agent({
+      keepAlive: true
+    })
   };
-  var dataHash = "";
+  var newNRCEventMap = {};
+  var oldNRCEventMap = {};
   var urlId = "";
   return instance.request(requestConfig).then(res => {
-    var data = extractContent(minifyPage(res.data), config.dataRegex);
-    if (data === null){
+    var content = exports.extractContent(res.data, config.contentRegex);
+    if (content === null) {
       console.error("Error: target data not found");
       reject();
     }
-    dataString = data.join("");
-    dataHash = crypto.createHash('md5').update(dataString).digest("hex");
-    urlId = crypto.createHash('md5').update(webUrl).digest("hex");
-    // Read old hash from database
-    return admin.database().ref('/page/' + urlId).once('value');
-  }).then((snapshot) => {
-    var pageChange = false;
-    var oldHash = null;
-    if (snapshot.val() && snapshot.val().hash) {
-      oldHash = snapshot.val().hash;
-      pageChange = dataHash !== oldHash;
-    } else {
-      // First time monitoring
-      console.error("Error: page not found: " + urlId);
+    var data = exports.parseContent(content[0], config.contentReplaceRegex);
+    for (let eventData of data.multiPage.events) {
+      newNRCEventMap[eventData.id] = NRCEvent.prototype.fromJSON(eventData);
     }
-    console.log("newHash: " + dataHash + " oldHash: " + oldHash + " change: " + pageChange);
+    console.log("Parsed contents: " + Object.keys(newNRCEventMap).length);
+    return firebaseDB.getEvents();
+  }).then((eventObj) => {
+    if (eventObj !== null) {
+      for (var id in eventObj) {
+        oldNRCEventMap[id] = NRCEvent.prototype.fromJSON(eventObj[id]);
+      }
+    }else{
+      console.error("Old NRC Events is empty.");
+    }
+    // TODO(M): 
+    // Compare each event ...
+    var eventChanges = [];
+    // Check deleted event
+    for(let id in oldNRCEventMap){
+      if (!(id in newNRCEventMap)){
+        eventChanges.push(new EventChange(oldNRCEventMap[id], eventChangeCode.DELETED))
+      }
+    }
+    for(let id in newNRCEventMap){
+      if (!(id in oldNRCEventMap)){
+        // New event
+        eventChanges.push(new EventChange(newNRCEventMap[id], eventChangeCode.NEW))
+      }else{
+        var code = NRCEvent.prototype.compareChange(oldNRCEventMap[id], newNRCEventMap[id]);
+        if (code != eventChangeCode.NO_CHANGE){
+          eventChanges.push(new EventChange(newNRCEventMap[id], code))
+        }
+      }
+    }
+    // Create promises for update DB
     // Update record in database
-    admin.database().ref('/page/' + urlId).set({hash: dataHash, url: webUrl});
-    return pageChange;
+    return firebaseDB.setEvents(newNRCEventMap).then(() => {
+      return eventChanges;
+    });
   }).catch(err => {
     console.log(err);
   });

@@ -1,6 +1,6 @@
 const NRCEvent = require('../models/NRCEvent');
 const assert = require('chai').assert;
-const eventChange = require('../constant').eventChange;
+const eventChangeCode = require('../constant').eventChangeCode;
 const mockData = require('./mockData.json');
 
 var MOCK_EVENT = mockData.MOCK_EVENT_1;
@@ -80,7 +80,7 @@ describe('NRCEvent Model', () => {
         var event2 = NRCEvent.prototype.fromJSON(MOCK_EVENT);
 
         var change = NRCEvent.prototype.compareChange(event1, event2);
-        assert.equal(change, eventChange.NO_CHANGE);
+        assert.equal(change, eventChangeCode.NO_CHANGE);
     }); 
 
     it('should compare event that has just been full correctly', () => {
@@ -89,7 +89,7 @@ describe('NRCEvent Model', () => {
         event2.regCount = MOCK_EVENT.capacity;
         
         var change = NRCEvent.prototype.compareChange(event1, event2);
-        assert.equal(change, eventChange.FULL);
+        assert.equal(change, eventChangeCode.FULL);
     }); 
 
     it('should compare event that has just had free slot correctly', () => {
@@ -99,7 +99,7 @@ describe('NRCEvent Model', () => {
         event2.regCount = MOCK_EVENT.capacity - 2;
         
         var change = NRCEvent.prototype.compareChange(event1, event2);
-        assert.equal(change, eventChange.FREE_SLOT);
+        assert.equal(change, eventChangeCode.FREE_SLOT);
     });
 
     it('should compare event that has just been almost full correctly', () => {
@@ -109,6 +109,6 @@ describe('NRCEvent Model', () => {
         event2.regCount = MOCK_EVENT.capacity - 2;
         
         var change = NRCEvent.prototype.compareChange(event1, event2);
-        assert.equal(change, eventChange.ALMOST_FULL);
+        assert.equal(change, eventChangeCode.ALMOST_FULL);
     }); 
 });

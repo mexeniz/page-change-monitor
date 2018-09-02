@@ -72,25 +72,25 @@ exports.findChanges = (webUrl) => {
       for (var id in eventObj) {
         oldNRCEventMap[id] = NRCEvent.prototype.fromJSON(eventObj[id]);
       }
-    }else{
+    } else {
       console.error("Old NRC Events is empty.");
     }
     // TODO(M): 
     // Compare each event ...
     var eventChanges = [];
     // Check deleted event
-    for(let id in oldNRCEventMap){
-      if (!(id in newNRCEventMap)){
+    for (let id in oldNRCEventMap) {
+      if (!(id in newNRCEventMap)) {
         eventChanges.push(new EventChange(oldNRCEventMap[id], eventChangeCode.DELETED))
       }
     }
-    for(let id in newNRCEventMap){
-      if (!(id in oldNRCEventMap)){
+    for (let id in newNRCEventMap) {
+      if (!(id in oldNRCEventMap)) {
         // New event
         eventChanges.push(new EventChange(newNRCEventMap[id], eventChangeCode.NEW))
-      }else{
+      } else {
         var code = NRCEvent.prototype.compareChange(oldNRCEventMap[id], newNRCEventMap[id]);
-        if (code != eventChangeCode.NO_CHANGE){
+        if (code != eventChangeCode.NO_CHANGE) {
           eventChanges.push(new EventChange(newNRCEventMap[id], code))
         }
       }

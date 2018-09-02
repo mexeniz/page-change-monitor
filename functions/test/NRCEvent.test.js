@@ -45,7 +45,7 @@ describe('NRCEvent Model', () => {
 
     it('should be converted to string correctly', () => {
         var event = NRCEvent.prototype.fromJSON(MOCK_EVENT);
-        console.log('event.toString()');
+        console.log('event.toString() : ');
         console.log(event.toString());
     });
 
@@ -74,7 +74,7 @@ describe('NRCEvent Model', () => {
     });
 });
 
-describe('NRCEvent Model', () => {
+describe('NRCEvent Change Comparison', () => {
     it('should compare event that has no any change correctly', () => {
         var event1 = NRCEvent.prototype.fromJSON(MOCK_EVENT);
         var event2 = NRCEvent.prototype.fromJSON(MOCK_EVENT);

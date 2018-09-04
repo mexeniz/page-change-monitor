@@ -14,30 +14,32 @@ exports.getBaseUrl = () => {
 };
 
 exports.getEvents = () => {
-    if (db == null) {
+    if (!db) {
         throw new Error('Admin app is not initialized.')
     }
     return db.ref(baseUrl).once('value').then((snapshot) => {
         return snapshot.val();
     }).catch((error) => {
         console.error(error);
-        return null
+        return null;
     });
 };
 
 exports.getEvent = (eventId) => {
-    if (db == null) {
+    if (!db) {
         throw new Error('Admin app is not initialized.')
     }
     return db.ref(baseUrl + '/' + eventId).once('value').then((snapshot) => {
-        if (snapshot != null) {
+        if (snapshot) {
             return snapshot.val();
+        }else{
+            return null;
         }
     });
 };
 
 exports.setEvent = (nrcEvent) => {
-    if (db == null) {
+    if (!db) {
         throw new Error('Admin app is not initialized.')
     }
     var eventId = nrcEvent.id;
@@ -45,14 +47,14 @@ exports.setEvent = (nrcEvent) => {
 };
 
 exports.setEvents = (nrcEventMap) => {
-    if (db == null) {
+    if (!db) {
         throw new Error('Admin app is not initialized.')
     }
     return db.ref(baseUrl).set(nrcEventMap);
 };
 
 exports.removeEvent = (eventId) => {
-    if (db == null) {
+    if (!db) {
         throw new Error('Admin app is not initialized.')
     }
     return db.ref(baseUrl + '/' + eventId).remove();

@@ -54,7 +54,7 @@ exports.findChanges = (webUrl) => {
   };
   var newNRCEventMap = {};
   var oldNRCEventMap = {};
-  var urlId = "";
+  let eventChanges = [];
   return instance.request(requestConfig).then(res => {
     var content = exports.extractContent(res.data, config.contentRegex);
     if (content === null) {
@@ -75,22 +75,23 @@ exports.findChanges = (webUrl) => {
     } else {
       console.error("Old NRC Events is empty.");
     }
-    // TODO(M): 
     // Compare each event ...
-    var eventChanges = [];
     // Check deleted event
     for (let id in oldNRCEventMap) {
       if (!(id in newNRCEventMap)) {
+        console.log("Found delete event: " + id);
         eventChanges.push(new EventChange(oldNRCEventMap[id], eventChangeCode.DELETED))
       }
     }
     for (let id in newNRCEventMap) {
       if (!(id in oldNRCEventMap)) {
         // New event
+        console.log("Found new event: " + id);
         eventChanges.push(new EventChange(newNRCEventMap[id], eventChangeCode.NEW))
       } else {
         var code = NRCEvent.prototype.compareChange(oldNRCEventMap[id], newNRCEventMap[id]);
-        if (code != eventChangeCode.NO_CHANGE) {
+        console.log("Found event change: " + id + ", code=" + code);
+        if (code !== eventChangeCode.NO_CHANGE && code !== eventChangeCode.ALMOST_FULL) {
           eventChanges.push(new EventChange(newNRCEventMap[id], code))
         }
       }
@@ -98,6 +99,7 @@ exports.findChanges = (webUrl) => {
     // Create promises for update DB
     // Update record in database
     return firebaseDB.setEvents(newNRCEventMap).then(() => {
+      console.log("Saved event successfully.");
       return eventChanges;
     });
   }).catch(err => {

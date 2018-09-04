@@ -1,5 +1,12 @@
 const eventChangeCode = require('../constant').eventChangeCode;
 
+var padZeroStart = function (str, size) {
+    while (str.length < (size || 2)) {
+        str = str + "0";
+    }
+    return str;
+}
+
 var getDateMonthString = (dateTime) => {
     // toUTCString() : 'Wed, 25 Jul 2018 19:04:00 GMT'
     var month = dateTime.toUTCString().split(' ')[2];
@@ -10,8 +17,7 @@ var getDateMonthString = (dateTime) => {
 var getTimeString = (dateTime) => {
     var hour = dateTime.getUTCHours().toString(),
         min = dateTime.getUTCMinutes().toString();
-    min
-    return `${hour.padStart(2,'0')}:${min.padStart(2,'0')}`;
+    return `${padZeroStart(hour, 2)}:${padZeroStart(min, 2)}`;
 };
 
 function NRCEvent(id, name, capacity, regCount, location, startDate, endDate, openDate, closeDate) {
@@ -27,13 +33,30 @@ function NRCEvent(id, name, capacity, regCount, location, startDate, endDate, op
     this.endDate = new Date(endDate); // End Running Date (epoch)      
     this.openDate = new Date(openDate); // Open Registration Date (epoch)  
     this.closeDate = new Date(closeDate); // Close Registration Date (epoch)
+
     // Generated properties
-    this.eventDate = getDateMonthString(this.startDate); // Event Date       ex. '25 July'
-    this.startDateTime = getTimeString(this.startDate); // Event Start Time ex. '19.04'
-    this.endDateTime = getTimeString(this.endDate); // Event End Time   ex. '20.30'
-    this.regDate = getDateMonthString(this.openDate); // Registration Date ex. '19 July'
-    this.regDateTime = getTimeString(this.openDate); // Registration Time ex. '20.30'
-};
+    if (this.startDate > 0) {
+        this.eventDate = getDateMonthString(this.startDate); // Event Date       ex. '25 July'
+        this.startDateTime = getTimeString(this.startDate); // Event Start Time ex. '19.04'
+    } else {
+        this.eventDate = "N/A";
+        this.startDateTime = "N/A"
+    }
+
+    if (this.endDate > 0) {
+        this.endDateTime = getTimeString(this.endDate); // Event End Time   ex. '20.30'
+    } else {
+        this.endDateTime = "N/A";
+    }
+
+    if (this.openDate > 0) {
+        this.regDate = getDateMonthString(this.openDate); // Registration Date ex. '19 July'
+        this.regDateTime = getTimeString(this.openDate); // Registration Time ex. '20.30'
+    } else {
+        this.regDate = "N/A";
+        this.regDateTime = "N/A";
+    }
+}
 
 /**
  * Convert instance to a string.
@@ -73,7 +96,7 @@ NRCEvent.prototype.toJSON = function () {
  * Check if event is full.
  */
 NRCEvent.prototype.isFull = function () {
-    return this.regCount == this.capacity;
+    return this.regCount === this.capacity;
 };
 
 /**
@@ -81,7 +104,7 @@ NRCEvent.prototype.isFull = function () {
  */
 NRCEvent.prototype.isAlmostFull = function () {
     var freeSlot = this.capacity - this.regCount;
-    return freeSlot != 0 && freeSlot <= 5;
+    return freeSlot !== 0 && freeSlot <= 5;
 };
 
 /**

@@ -13,10 +13,6 @@ EventChange.prototype.toString = function () {
     let eventString = `Event: ${nrcEvent.name}\n` +
         `Run date: ${nrcEvent.eventDate} ${nrcEvent.startDateTime}-${nrcEvent.endDateTime}`;
     switch (this.code) {
-        case eventChangeCode.ALMOST_FULL:
-            eventString = eventString + `\nFree slot: ${nrcEvent.capacity - nrcEvent.regCount}/${nrcEvent.capacity}\n` +
-                `UPDATE: Almost full ლ(｀ー´ლ)`;
-            break;
         case eventChangeCode.NEW:
             eventString = eventString + `\nOpen date: ${nrcEvent.regDate} ${nrcEvent.regDateTime}\n` +
                 `UPDATE: New Event ε=ε=ε=┌(;^Д^)ﾉ`;
@@ -24,12 +20,16 @@ EventChange.prototype.toString = function () {
         case eventChangeCode.DELETED:
             eventString = eventString + `\nUPDATE: Deleted ¯\\_(ツ)_/¯`;
             break;
+        case eventChangeCode.ALMOST_FULL:
+            eventString = eventString + `\nFree slot: ${nrcEvent.capacity - nrcEvent.regCount}/${nrcEvent.capacity}\n` +
+                `UPDATE: Almost Full ლ(｀ー´ლ)`;
+            break;
         case eventChangeCode.FREE_SLOT:
             eventString = eventString + `\nFree slot: ${nrcEvent.capacity - nrcEvent.regCount}/${nrcEvent.capacity}\n` +
-                `UPDATE: Almost full ლ(｀ー´ლ)`;
+                `UPDATE: Free Slot 😆😆`;
             break;
         case eventChangeCode.FULL:
-            eventString = eventString + `\nUPDATE: Full ᕙ(⇀‸↼‶)ᕗ`;
+            eventString = eventString + `\nUPDATE: Full 😰😰 ᕙ(⇀‸↼‶)ᕗ`;
             break;
         default:
             eventString = eventString + `\nUnknown change code=${this.code} щ（ﾟДﾟщ）`;

@@ -79,7 +79,7 @@ exports.findChanges = (webUrl) => {
     // Check deleted event
     for (let id in oldNRCEventMap) {
       if (!(id in newNRCEventMap)) {
-        console.log("Found delete event: " + id);
+        console.log("Found deleted event: " + id);
         eventChanges.push(new EventChange(oldNRCEventMap[id], eventChangeCode.DELETED))
       }
     }

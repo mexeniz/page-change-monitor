@@ -140,10 +140,9 @@ NRCEvent.prototype.fromJSON = function (jsonEvent) {
         closeDate
     } = jsonEvent;
     var location = meetingPointDescription + meetingPointDescription2;
+    var eventName = name;
     if (headline && subHeadline1){
-        var eventName = `${headline} ${name} (${subHeadline1})`;
-    }else{
-        var eventName = name;
+        eventName = `${headline} ${name} (${subHeadline1})`;
     }
     return new NRCEvent(id, eventName, capacity, registrationCount, location, startDate, endDate, openDate, closeDate);
 };

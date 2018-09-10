@@ -64,8 +64,9 @@ exports.findChanges = (webUrl) => {
     var data = exports.parseContent(content[0], config.contentReplaceRegex);
     for (let eventData of data.multiPage.events) {
       newNRCEventMap[eventData.id] = NRCEvent.prototype.fromJSON(eventData);
+      console.log(`Contents: id=${eventData.id} ` + newNRCEventMap[eventData.id].toString());
     }
-    console.log("Parsed contents: " + Object.keys(newNRCEventMap).length);
+    console.log("Total parsed contents: " + Object.keys(newNRCEventMap).length);
     return firebaseDB.getEvents();
   }).then((eventObj) => {
     if (eventObj !== null) {

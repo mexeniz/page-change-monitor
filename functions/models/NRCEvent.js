@@ -2,7 +2,7 @@ const eventChangeCode = require('../constant').eventChangeCode;
 
 var padZeroStart = function (str, size) {
     while (str.length < (size || 2)) {
-        str = str + "0";
+        str = "0" + str ;
     }
     return str;
 }

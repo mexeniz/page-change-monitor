@@ -90,6 +90,14 @@ describe('NRCEvent Change Comparison', () => {
         
         var change = NRCEvent.prototype.compareChange(event1, event2);
         assert.equal(change, eventChangeCode.FULL);
+
+        event1 = NRCEvent.prototype.fromJSON(MOCK_EVENT);
+        event2 = NRCEvent.prototype.fromJSON(MOCK_EVENT);
+        event1.regCount = MOCK_EVENT.capacity;
+        event2.regCount = MOCK_EVENT.capacity;
+        
+        change = NRCEvent.prototype.compareChange(event1, event2);
+        assert.equal(change, eventChangeCode.NO_CHANGE);
     }); 
 
     it('should compare event that has just had free slot correctly', () => {

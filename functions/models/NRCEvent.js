@@ -129,6 +129,7 @@ NRCEvent.prototype.fromJSON = function (jsonEvent) {
         id,
         name,
         capacity,
+        regCount,
         registrationCount,
         meetingPointDescription,
         meetingPointDescription2,
@@ -139,6 +140,9 @@ NRCEvent.prototype.fromJSON = function (jsonEvent) {
         openDate,
         closeDate
     } = jsonEvent;
+    if (!registrationCount){
+        registrationCount = regCount;
+    }
     var location = meetingPointDescription + meetingPointDescription2;
     var eventName = name;
     if (headline && subHeadline1){

@@ -140,7 +140,7 @@ NRCEvent.prototype.fromJSON = function (jsonEvent) {
         openDate,
         closeDate
     } = jsonEvent;
-    if (!registrationCount){
+    if (registrationCount === undefined || registrationCount === null){
         registrationCount = regCount;
     }
     var location = meetingPointDescription + meetingPointDescription2;

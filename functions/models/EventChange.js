@@ -15,7 +15,11 @@ EventChange.prototype.toString = function () {
     switch (this.code) {
         case eventChangeCode.NEW:
             eventString = eventString + `\nOpen date: ${nrcEvent.regDate} ${nrcEvent.regDateTime}\n` +
-                `UPDATE: New Event ε=ε=ε=┌(;^Д^)ﾉ`;
+                "UPDATE: New Event ヽ(´▽`)/";
+            break;
+        case eventChangeCode.OPENED:
+            eventString = eventString + `\nCapacity: ${nrcEvent.capacity} Location: ${nrcEvent.location}\n` +
+                `UPDATE: Open\nREGISTER NOW ε=ε=ε=┌(;^Д^)ﾉ`;
             break;
         case eventChangeCode.DELETED:
             eventString = eventString + `\nUPDATE: Deleted ¯\\_(ツ)_/¯`;

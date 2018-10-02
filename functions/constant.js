@@ -4,5 +4,7 @@ exports.eventChangeCode = {
     'ALMOST_FULL' : 2,
     'FREE_SLOT' : 3,
     'NEW' : 4,
-    'DELETED' : 5
+    'DELETED' : 5,
+    'OPENED' : 6,
+    'CLOSED' : 7
 };

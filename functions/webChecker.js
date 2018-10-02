@@ -84,18 +84,32 @@ exports.findChanges = (webUrl) => {
         eventChanges.push(new EventChange(oldNRCEventMap[id], eventChangeCode.DELETED))
       }
     }
+    
+    // Current time is in UTC
+    var now = Math.floor(Date.now() / 1000);
     for (let id in newNRCEventMap) {
       if (!(id in oldNRCEventMap)) {
         // New event
         console.log("Found new event: " + id);
         eventChanges.push(new EventChange(newNRCEventMap[id], eventChangeCode.NEW))
       } else {
-        var code = NRCEvent.prototype.compareChange(oldNRCEventMap[id], newNRCEventMap[id]);
+        var code = eventChangeCode.NO_CHANGE;
+        var openDate = Math.floor(newNRCEventMap[id].openDate.getTime() / 1000);
+        // openDate is GMT+7, convert to UTC
+        openDate = openDate - (7 * 60 * 60);
+        if ((now - openDate) > 0 && (now - openDate) <= (20 * 60)){
+          // Event has been just opened within 20 min!
+          console.log("Found recent opened event: " + id);
+          code = eventChangeCode.OPENED;
+        }else{
+          code = NRCEvent.prototype.compareChange(oldNRCEventMap[id], newNRCEventMap[id]);
+        }
         console.log("Found event change: " + id + ", code=" + code);
-        if (code !== eventChangeCode.NO_CHANGE && code !== eventChangeCode.ALMOST_FULL) {
+        if (code !== eventChangeCode.NO_CHANGE) {
           eventChanges.push(new EventChange(newNRCEventMap[id], code))
         }
       }
+      //
     }
     // Create promises for update DB
     // Update record in database

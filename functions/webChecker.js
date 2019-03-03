@@ -48,6 +48,7 @@ exports.findChanges = (webUrl) => {
   const requestConfig = {
     method: 'get',
     url: webUrl,
+    headers: config.clientHeader,
     httpsAgent: new https.Agent({
       keepAlive: true
     })

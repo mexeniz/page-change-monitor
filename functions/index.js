@@ -17,21 +17,23 @@ var notifyWebChangeMessage = (url, eventChanges) => {
 };
 exports.notifyWebChangeMessage = notifyWebChangeMessage;
 
-var lineNotifySendMessage = (token, message) => {
-  var notify = new lineApi.Notify({token: token});
-  notify.send({message: message}).then(console.log).catch(console.error);
+var lineNotifySendMessage = (tokens, message) => {
+  tokens.forEach(token => {
+    var notify = new lineApi.Notify({token: token});
+    notify.send({message: message}).then(console.log).catch(console.error);
+  });
 };
 
 exports.nrcEventCheck = functions.https.onRequest((req, res) => {
-  let notifyToken = req.body.notifyToken;
+  let notifyTokens = req.body.notifyTokens;
   let webUrl = req.body.webUrl;
-  if (notifyToken) {
+  if (notifyTokens) {
     webChecker.findChanges(webUrl).then((eventChanges) => {
       console.log("findChanges: " + eventChanges.length);
       if (eventChanges.length > 0) {
         let message = notifyWebChangeMessage(webUrl, eventChanges);
         console.log("Sending message: " + message);
-        lineNotifySendMessage(notifyToken, message);
+        lineNotifySendMessage(notifyTokens, message);
         return res.status(200).json({"change": message});
       } else {
         return res.status(200).json({"change": "Nothing"});
